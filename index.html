@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>79th Independence Day Quiz - August 15, 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 3px solid #FF9933;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            color: #FF9933;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            color: #138808;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .registration-form {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #FF9933;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #FF9933;
+        }
+
+        .set-selection {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .set-btn {
+            padding: 15px 25px;
+            background: linear-gradient(45deg, #FF9933, #FFB366);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .set-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .start-btn {
+            background: linear-gradient(45deg, #138808, #4CAF50);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-container {
+            display: none;
+            text-align: left;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .timer {
+            background: #FF9933;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress {
+            background: #138808;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .question {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border-left: 5px solid #FF9933;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .question h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            border-color: #FF9933;
+            background: #fff5e6;
+        }
+
+        .option.selected {
+            background: #FF9933;
+            color: white;
+            border-color: #FF9933;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .prev-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        .next-btn, .submit-btn {
+            background: #138808;
+            color: white;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-container {
+            display: none;
+            text-align: center;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            border-radius: 20px;
+            padding: 40px;
+            border: 3px solid #FF9933;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .result-header {
+            margin-bottom: 30px;
+        }
+
+        .result-title {
+            color: #FF9933;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .student-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #138808;
+        }
+
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #138808;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .performance-bar {
+            background: #e9ecef;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF9933, #138808);
+            transition: width 2s ease-in-out;
+            border-radius: 15px;
+        }
+
+        .restart-btn {
+            background: linear-gradient(45deg, #FF9933, #138808);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .flag-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #FF9933 33%, #FFFFFF 33%, #FFFFFF 66%, #138808 66%);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 2em;
+            }
+            
+            .set-selection {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quiz-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flag-decoration"></div>
+    
+    <div class="container">
+        <!-- Registration Screen -->
+        <div id="registrationScreen" class="registration-screen">
+            <div class="header">
+                <h1 class="title">🇮🇳 79th Independence Day Quiz</h1>
+                <p class="subtitle">August 15, 2025 | Celebrating Our Nation's Pride</p>
+            </div>
+            
+            <div class="registration-form">
+                <h2 style="color: #FF9933; margin-bottom: 20px;">Student Registration</h2>
+                
+                <div class="form-group">
+                    <label for="studentName">Student Name:</label>
+                    <input type="text" id="studentName" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentClass">Class:</label>
+                    <select id="studentClass" required>
+                        <option value="">Select your class</option>
+                        <option value="1st">1st Class</option>
+                        <option value="2nd">2nd Class</option>
+                        <option value="3rd">3rd Class</option>
+                        <option value="4th">4th Class</option>
+                        <option value="5th">5th Class</option>
+                        <option value="6th">6th Class</option>
+                        <option value="7th">7th Class</option>
+                        <option value="8th">8th Class</option>
+                        <option value="9th">9th Class</option>
+                        <option value="10th">10th Class</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="studentHouse">House:</label>
+                    <select id="studentHouse" required>
+                        <option value="">Select your house</option>
+                        <option value="Red House">Red House</option>
+                        <option value="Blue House">Blue House</option>
+                        <option value="Green House">Green House</option>
+                        <option value="Yellow House">Yellow House</option>
+                    </select>
+                </div>
+            </div>
+            
+            <h3 style="color: #138808; margin: 20px 0;">Choose Your Quiz Set:</h3>
+            <div class="set-selection">
+                <button class="set-btn" onclick="selectSet('set1')">
+                    Set 1<br><small>(Class 1st & 2nd)</small>
+                </button>
+                <button class="set-btn" onclick="selectSet('set2')">
+                    Set 2<br><small>(Class 3rd to 5th)</small>
+                </button>
+                <button class="set-btn" onclick="selectSet('set3')">
+                    Set 3<br><small>(Class 6th to 8th)</small>
+                </button>
+                <button class="set-btn" onclick="selectSet('set4')">
+                    Set 4<br><small>(Class 9th & 10th)</small>
+                </button>
+            </div>
+            
+            <button class="start-btn" onclick="startQuiz()" id="startBtn" disabled>
+                🚀 Start Quiz (30 Minutes)
+            </button>
+        </div>
+        
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="quiz-container">
+            <div class="quiz-header">
+                <div class="timer" id="timer">⏰ 30:00</div>
+                <div class="progress" id="progress">Question 1 of 25</div>
+            </div>
+            
+            <div class="question" id="questionContainer">
+                <!-- Questions will be loaded here -->
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="nav-btn prev-btn" onclick="prevQuestion()" id="prevBtn">← Previous</button>
+                <button class="nav-btn next-btn" onclick="nextQuestion()" id="nextBtn">Next →</button>
+                <button class="nav-btn submit-btn" onclick="submitQuiz()" id="submitBtn" style="display: none;">Submit Quiz</button>
+            </div>
+        </div>
+        
+        <!-- Result Screen -->
+        <div id="resultScreen" class="result-container">
+            <div class="result-card">
+                <div class="result-header">
+                    <h1 class="result-title">🏆 Quiz Results</h1>
+                    <p style="color: #666;">79th Independence Day Quiz - August 15, 2025</p>
+                </div>
+                
+                <div class="student-info" id="studentInfo">
+                    <!-- Student info will be displayed here -->
+                </div>
+                
+                <div class="score-display" id="scoreDisplay">0/25</div>
+                
+                <div class="performance-bar">
+                    <div class="performance-fill" id="performanceFill" style="width: 0%"></div>
+                </div>
+                
+                <div id="performanceMessage" style="font-size: 18px; margin: 20px 0; color: #333;"></div>
+                
+                <button class="restart-btn" onclick="restartQuiz()">🔄 Take Quiz Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data for different sets
+        const quizSets = {
+            set1: [ // Classes 1st & 2nd
+                {
+                    question: "What are the colors of the Indian flag?",
+                    options: ["Red, White, Blue", "Saffron, White, Green", "Yellow, White, Green", "Orange, White, Blue"],
+                    correct: 1
+                },
+                {
+                    question: "When do we celebrate Independence Day?",
+                    options: ["August 15", "January 26", "October 2", "March 23"],
+                    correct: 0
+                },
+                {
+                    question: "Who is called the Father of the Nation?",
+                    options: ["Nehru", "Gandhi", "Subhas Chandra Bose", "Bhagat Singh"],
+                    correct: 1
+                },
+                {
+                    question: "What is in the center of the Indian flag?",
+                    options: ["Star", "Wheel", "Lotus", "Sun"],
+                    correct: 1
+                },
+                {
+                    question: "What is our national bird?",
+                    options: ["Eagle", "Sparrow", "Peacock", "Parrot"],
+                    correct: 2
+                },
+                {
+                    question: "What is our national animal?",
+                    options: ["Lion", "Tiger", "Elephant", "Leopard"],
+                    correct: 1
+                },
+                {
+                    question: "What is our national flower?",
+                    options: ["Rose", "Lotus", "Jasmine", "Marigold"],
+                    correct: 1
+                },
+                {
+                    question: "From which country did India get independence?",
+                    options: ["France", "Portugal", "Britain", "Netherlands"],
+                    correct: 2
+                },
+                {
+                    question: "What is the capital of India?",
+                    options: ["Mumbai", "Chennai", "Kolkata", "New Delhi"],
+                    correct: 3
+                },
+                {
+                    question: "How many spokes are there in the Ashoka Chakra?",
+                    options: ["20", "24", "22", "26"],
+                    correct: 1
+                },
+                {
+                    question: "What do we say to our country in Hindi?",
+                    options: ["Bharat Mata", "Desh", "Both A and B", "None"],
+                    correct: 2
+                },
+                {
+                    question: "Who wrote our National Anthem?",
+                    options: ["Tagore", "Nehru", "Gandhi", "Iqbal"],
+                    correct: 0
+                },
+                {
+                    question: "What is 'Vande Mataram'?",
+                    options: ["National Song", "National Anthem", "Prayer", "Poem"],
+                    correct: 0
+                },
+                {
+                    question: "Which river is considered holy in India?",
+                    options: ["Yamuna", "Ganga", "Godavari", "Krishna"],
+                    correct: 1
+                },
+                {
+                    question: "What do we hoist on Independence Day?",
+                    options: ["Balloon", "Flag", "Banner", "Poster"],
+                    correct: 1
+                },
+                {
+                    question: "Where is the Red Fort located?",
+                    options: ["Mumbai", "Delhi", "Chennai", "Kolkata"],
+                    correct: 1
+                },
+                {
+                    question: "What color is at the top of Indian flag?",
+                    options: ["White", "Green", "Saffron", "Blue"],
+                    correct: 2
+                },
+                {
+                    question: "What is our national fruit?",
+                    options: ["Apple", "Banana", "Mango", "Orange"],
+                    correct: 2
+                },
+                {
+                    question: "India is located in which continent?",
+                    options: ["Africa", "Asia", "Europe", "America"],
+                    correct: 1
+                },
+                {
+                    question: "What do we celebrate on August 15th?",
+                    options: ["Republic Day", "Independence Day", "Gandhi Jayanti", "Children's Day"],
+                    correct: 1
+                },
+                {
+                    question: "Who gives speech on Independence Day?",
+                    options: ["President", "Prime Minister", "Chief Minister", "Governor"],
+                    correct: 1
+                },
+                {
+                    question: "What is the name of our planet?",
+                    options: ["Mars", "Jupiter", "Earth", "Venus"],
+                    correct: 2
+                },
+                {
+                    question: "How many states are there in India?",
+                    options: ["25", "28", "30", "32"],
+                    correct: 1
+                },
+                {
+                    question: "What language do most Indians speak?",
+                    options: ["English", "Hindi", "Tamil", "Bengali"],
+                    correct: 1
+                },
+                {
+                    question: "What is the full form of BJP?",
+                    options: ["Bharatiya Janata Party", "Bharatiya Jana Party", "Bharatiya Janta Party", "Bharatiya Joint Party"],
+                    correct: 0
+                }
+            ],
+            
+            set2: [ // Classes 3rd to 5th
+                {
+                    question: "In which year did India gain independence?",
+                    options: ["1946", "1947", "1948", "1949"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the first Prime Minister of India?",
+                    options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel", "Dr. Rajendra Prasad"],
+                    correct: 1
+                },
+                {
+                    question: "What is the Ashoka Chakra also known as?",
+                    options: ["Wheel of Time", "Wheel of Law", "Wheel of Fortune", "Wheel of Life"],
+                    correct: 1
+                },
+                {
+                    question: "Who wrote the Indian National Anthem 'Jana Gana Mana'?",
+                    options: ["Bankim Chandra Chattopadhyay", "Rabindranath Tagore", "Sarojini Naidu", "Subhas Chandra Bose"],
+                    correct: 1
+                },
+                {
+                    question: "Where did the Salt March (Dandi March) take place?",
+                    options: ["Punjab", "Bengal", "Gujarat", "Tamil Nadu"],
+                    correct: 2
+                },
+                {
+                    question: "Who was known as 'Netaji'?",
+                    options: ["Bhagat Singh", "Chandrashekhar Azad", "Subhas Chandra Bose", "Ashfaqulla Khan"],
+                    correct: 2
+                },
+                {
+                    question: "What is the currency of India?",
+                    options: ["Dollar", "Pound", "Rupee", "Yen"],
+                    correct: 2
+                },
+                {
+                    question: "Which movement was started by Mahatma Gandhi in 1920?",
+                    options: ["Quit India Movement", "Non-Cooperation Movement", "Civil Disobedience Movement", "Khilafat Movement"],
+                    correct: 1
+                },
+                {
+                    question: "Who designed the Indian National Flag?",
+                    options: ["Mahatma Gandhi", "Pingali Venkayya", "Jawaharlal Nehru", "Sardar Patel"],
+                    correct: 1
+                },
+                {
+                    question: "What does the white color in Indian flag represent?",
+                    options: ["Courage", "Peace and Truth", "Prosperity", "Sacrifice"],
+                    correct: 1
+                },
+                {
+                    question: "Which freedom fighter is known as 'Shaheed-e-Azam'?",
+                    options: ["Chandrashekhar Azad", "Bhagat Singh", "Ashfaqulla Khan", "Ram Prasad Bismil"],
+                    correct: 1
+                },
+                {
+                    question: "In which city is the Gateway of India located?",
+                    options: ["Delhi", "Chennai", "Mumbai", "Kolkata"],
+                    correct: 2
+                },
+                {
+                    question: "What was the slogan of Subhas Chandra Bose?",
+                    options: ["Jai Hind", "Vande Mataram", "Inquilab Zindabad", "Sarfaroshi ki Tamanna"],
+                    correct: 0
+                },
+                {
+                    question: "Which river flows through the capital of India?",
+                    options: ["Ganga", "Yamuna", "Godavari", "Krishna"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the Iron Man of India?",
+                    options: ["Jawaharlal Nehru", "Sardar Vallabhbhai Patel", "Lal Bahadur Shastri", "Maulana Azad"],
+                    correct: 1
+                },
+                {
+                    question: "What is the national tree of India?",
+                    options: ["Neem", "Peepal", "Banyan", "Mango"],
+                    correct: 2
+                },
+                {
+                    question: "Who gave the slogan 'Inquilab Zindabad'?",
+                    options: ["Bhagat Singh", "Maulana Hasrat Mohani", "Chandrashekhar Azad", "Ashfaqulla Khan"],
+                    correct: 1
+                },
+                {
+                    question: "What is the highest mountain peak in India?",
+                    options: ["K2", "Kanchenjunga", "Nanga Parbat", "Mount Everest"],
+                    correct: 1
+                },
+                {
+                    question: "Which is the longest river in India?",
+                    options: ["Yamuna", "Brahmaputra", "Ganga", "Godavari"],
+                    correct: 2
+                },
+                {
+                    question: "Who was the first woman Prime Minister of India?",
+                    options: ["Sarojini Naidu", "Indira Gandhi", "Sushma Swaraj", "Pratibha Patil"],
+                    correct: 1
+                },
+                {
+                    question: "What is the national game of India?",
+                    options: ["Cricket", "Football", "Hockey", "Kabaddi"],
+                    correct: 2
+                },
+                {
+                    question: "Which freedom fighter was known as 'Punjab Kesari'?",
+                    options: ["Bhagat Singh", "Lala Lajpat Rai", "Sukhdev", "Rajguru"],
+                    correct: 1
+                },
+                {
+                    question: "What is the total number of Union Territories in India?",
+                    options: ["6", "7", "8", "9"],
+                    correct: 2
+                },
+                {
+                    question: "Who started the Azad Hind Fauj (Indian National Army)?",
+                    options: ["Mahatma Gandhi", "Subhas Chandra Bose", "Bhagat Singh", "Chandrashekhar Azad"],
+                    correct: 1
+                },
+                {
+                    question: "What does the saffron color in the Indian flag represent?",
+                    options: ["Peace", "Courage and Sacrifice", "Prosperity", "Truth"],
+                    correct: 1
+                }
+            ],
+            
+            set3: [ // Classes 6th to 8th
+                {
+                    question: "Who was the last Viceroy of India?",
+                    options: ["Lord Curzon", "Lord Mountbatten", "Lord Wavell", "Lord Linlithgow"],
+                    correct: 1
+                },
+                {
+                    question: "Which act partitioned Bengal in 1905?",
+                    options: ["Government of India Act", "Partition of Bengal Act", "Indian Councils Act", "Morley-Minto Reforms"],
+                    correct: 1
+                },
+                {
+                    question: "Who founded the Indian National Congress?",
+                    options: ["Dadabhai Naoroji", "A.O. Hume", "Bal Gangadhar Tilak", "Gopal Krishna Gokhale"],
+                    correct: 1
+                },
+                {
+                    question: "In which year was the Jallianwala Bagh massacre?",
+                    options: ["1918", "1919", "1920", "1921"],
+                    correct: 1
+                },
+                {
+                    question: "Who coined the term 'Satyagraha'?",
+                    options: ["Rabindranath Tagore", "Mahatma Gandhi", "Jawaharlal Nehru", "Gopal Krishna Gokhale"],
+                    correct: 1
+                },
+                {
+                    question: "Which movement was launched on August 8, 1942?",
+                    options: ["Non-Cooperation Movement", "Civil Disobedience Movement", "Quit India Movement", "Khilafat Movement"],
+                    correct: 2
+                },
+                {
+                    question: "Who was the President of Indian National Congress when independence was declared?",
+                    options: ["Jawaharlal Nehru", "Mahatma Gandhi", "J.B. Kripalani", "Maulana Azad"],
+                    correct: 2
+                },
+                {
+                    question: "What was the original name of Subhas Chandra Bose's army?",
+                    options: ["Azad Hind Fauj", "Indian National Army", "Hindustan Republican Army", "Both A and B"],
+                    correct: 3
+                },
+                {
+                    question: "Who gave the famous speech 'Tryst with Destiny'?",
+                    options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Patel", "Dr. Rajendra Prasad"],
+                    correct: 1
+                },
+                {
+                    question: "Which plan led to the partition of India?",
+                    options: ["Cabinet Mission Plan", "Mountbatten Plan", "Wavell Plan", "Cripps Mission"],
+                    correct: 1
+                },
+                {
+                    question: "Who was known as the 'Grand Old Man of India'?",
+                    options: ["Bal Gangadhar Tilak", "Dadabhai Naoroji", "Gopal Krishna Gokhale", "Lala Lajpat Rai"],
+                    correct: 1
+                },
+                {
+                    question: "In which year was the Simon Commission formed?",
+                    options: ["1926", "1927", "1928", "1929"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the founder of Ghadar Party?",
+                    options: ["Lala Hardayal", "Sohan Singh Bhakna", "Both A and B", "Kartar Singh Sarabha"],
+                    correct: 2
+                },
+                {
+                    question: "What was the duration of the Non-Cooperation Movement?",
+                    options: ["1919-1922", "1920-1922", "1921-1924", "1920-1923"],
+                    correct: 1
+                },
+                {
+                    question: "Who established the Swaraj Party?",
+                    options: ["Motilal Nehru and C.R. Das", "Bal Gangadhar Tilak", "Lala Lajpat Rai", "Bipin Chandra Pal"],
+                    correct: 0
+                },
+                {
+                    question: "What was the main objective of the Khilafat Movement?",
+                    options: ["Indian Independence", "Protecting the Ottoman Empire", "Hindu-Muslim Unity", "All of the above"],
+                    correct: 3
+                },
+                {
+                    question: "Who was the first Indian to become the President of Indian National Congress?",
+                    options: ["Womesh Chunder Bonnerjee", "Dadabhai Naoroji", "Badruddin Tyabji", "George Yule"],
+                    correct: 0
+                },
+                {
+                    question: "Which freedom fighter wrote 'Hind Swaraj'?",
+                    options: ["Bal Gangadhar Tilak", "Mahatma Gandhi", "Jawaharlal Nehru", "Lala Lajpat Rai"],
+                    correct: 1
+                },
+                {
+                    question: "What was the slogan of the Kakori Conspiracy?",
+                    options: ["Inquilab Zindabad", "Vande Mataram", "Sarfaroshi ki Tamanna", "Jai Hind"],
+                    correct: 0
+                },
+                {
+                    question: "Who was the Governor-General when the Government of India Act 1935 was passed?",
+                    options: ["Lord Willingdon", "Lord Linlithgow", "Lord Irwin", "Lord Reading"],
+                    correct: 1
+                },
+                {
+                    question: "Which session of Indian National Congress declared 'Purna Swaraj'?",
+                    options: ["Calcutta Session", "Lahore Session", "Karachi Session", "Lucknow Session"],
+                    correct: 1
+                },
+                {
+                    question: "Who was known as 'Lokmanya'?",
+                    options: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Lala Lajpat Rai", "Bipin Chandra Pal"],
+                    correct: 0
+                },
+                {
+                    question: "What was the original name of Allahabad?",
+                    options: ["Kaushambi", "Prayag", "Hastinapur", "Indraprastha"],
+                    correct: 1
+                },
+                {
+                    question: "Who led the revolt of 1857 in Lucknow?",
+                    options: ["Rani Lakshmibai", "Begum Hazrat Mahal", "Tatya Tope", "Kunwar Singh"],
+                    correct: 1
+                },
+                {
+                    question: "Which newspaper was started by Bal Gangadhar Tilak?",
+                    options: ["Kesari", "Maratha", "Both A and B", "Young India"],
+                    correct: 2
+                }
+            ],
+            
+            set4: [ // Classes 9th & 10th
+                {
+                    question: "Who was the Constitutional Advisor to the Constituent Assembly?",
+                    options: ["Dr. B.R. Ambedkar", "Dr. B.N. Rau", "K.M. Munshi", "Alladi Krishnaswami Ayyar"],
+                    correct: 1
+                },
+                {
+                    question: "Which Act introduced the system of 'Dyarchy' in provinces?",
+                    options: ["Government of India Act 1909", "Government of India Act 1919", "Government of India Act 1935", "Indian Independence Act 1947"],
+                    correct: 1
+                },
+                {
+                    question: "Who presided over the Constituent Assembly?",
+                    options: ["Dr. Rajendra Prasad", "Jawaharlal Nehru", "Dr. B.R. Ambedkar", "Maulana Abul Kalam Azad"],
+                    correct: 0
+                },
+                {
+                    question: "What was the immediate cause of the Revolt of 1857?",
+                    options: ["Economic exploitation", "Religious interference", "Greased cartridges", "Doctrine of Lapse"],
+                    correct: 2
+                },
+                {
+                    question: "Who established the Hindustan Republican Association?",
+                    options: ["Chandrashekhar Azad", "Ram Prasad Bismil", "Sachindranath Sanyal", "Ashfaqulla Khan"],
+                    correct: 2
+                },
+                {
+                    question: "Which movement is associated with the slogan 'Do or Die'?",
+                    options: ["Non-Cooperation Movement", "Civil Disobedience Movement", "Quit India Movement", "Khilafat Movement"],
+                    correct: 2
+                },
+                {
+                    question: "Who was the first woman President of Indian National Congress?",
+                    options: ["Sarojini Naidu", "Annie Besant", "Aruna Asaf Ali", "Sucheta Kripalani"],
+                    correct: 1
+                },
+                {
+                    question: "What was the main reason for the failure of the Cripps Mission?",
+                    options: ["Partition proposal", "Dominion status offer", "Defense clause", "All of the above"],
+                    correct: 3
+                },
+                {
+                    question: "Who coined the term 'Pakistan'?",
+                    options: ["Muhammad Ali Jinnah", "Choudhry Rahmat Ali", "Allama Iqbal", "Liaquat Ali Khan"],
+                    correct: 1
+                },
+                {
+                    question: "Which Gupta ruler is known as the 'Napoleon of India'?",
+                    options: ["Chandragupta I", "Samudragupta", "Chandragupta II", "Kumaragupta"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the founder of the Servants of India Society?",
+                    options: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Dadabhai Naoroji", "Mahadev Govind Ranade"],
+                    correct: 1
+                },
+                {
+                    question: "Which Act provided for the establishment of the Federal Court of India?",
+                    options: ["Government of India Act 1919", "Government of India Act 1935", "Indian Councils Act 1909", "Charter Act 1833"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the first Indian member of the British Parliament?",
+                    options: ["Dadabhai Naoroji", "Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Surendranath Banerjee"],
+                    correct: 0
+                },
+                {
+                    question: "What was the significance of the August Offer (1940)?",
+                    options: ["Promised dominion status after war", "Offered complete independence", "Accepted Congress demands", "Rejected two-nation theory"],
+                    correct: 0
+                },
+                {
+                    question: "Who was known as the 'Father of Indian Unrest'?",
+                    options: ["Lala Lajpat Rai", "Bal Gangadhar Tilak", "Bipin Chandra Pal", "Aurobindo Ghosh"],
+                    correct: 1
+                },
+                {
+                    question: "Which commission was appointed to investigate the Jallianwala Bagh massacre?",
+                    options: ["Simon Commission", "Hunter Commission", "Butler Commission", "Lee Commission"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the Secretary of State for India when the Government of India Act 1935 was passed?",
+                    options: ["Lord Zetland", "Sir Samuel Hoare", "Lord Peel", "Lord Halifax"],
+                    correct: 1
+                },
+                {
+                    question: "What was the main objective of the Home Rule Movement?",
+                    options: ["Complete independence", "Self-government within the Empire", "Dominion status", "Provincial autonomy"],
+                    correct: 1
+                },
+                {
+                    question: "Who established the Indian Independence League in Japan?",
+                    options: ["Subhas Chandra Bose", "Rash Behari Bose", "A.M. Sahay", "Mohan Singh"],
+                    correct: 1
+                },
+                {
+                    question: "Which resolution was passed by the All India Congress Committee in 1942?",
+                    options: ["Quit India Resolution", "Non-Cooperation Resolution", "Swaraj Resolution", "Civil Disobedience Resolution"],
+                    correct: 0
+                },
+                {
+                    question: "Who was the last Governor-General of free India?",
+                    options: ["Lord Mountbatten", "C. Rajagopalachari", "Lord Wavell", "Lord Irwin"],
+                    correct: 1
+                },
+                {
+                    question: "What was the immediate cause of the Sepoy Mutiny in Barrackpore?",
+                    options: ["Economic grievances", "Mangal Pandey's attack", "Religious issues", "Military reforms"],
+                    correct: 1
+                },
+                {
+                    question: "Who was known as 'Deshbandhu'?",
+                    options: ["Chittaranjan Das", "Subhas Chandra Bose", "Aurobindo Ghosh", "Bipin Chandra Pal"],
+                    correct: 0
+                },
+                {
+                    question: "Which session of the Indian National Congress is known as the 'Partition Session'?",
+                    options: ["Calcutta Session 1906", "Surat Session 1907", "Karachi Session 1931", "Lahore Session 1929"],
+                    correct: 1
+                },
+                {
+                    question: "Who was the first Chief Justice of India?",
+                    options: ["Justice H.J. Kania", "Justice M. Patanjali Sastri", "Justice Mehr Chand Mahajan", "Justice B.K. Mukherjea"],
+                    correct: 0
+                }
+            ]
+        };
+
+        // Global variables
+        let currentSet = null;
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let timeRemaining = 1800; // 30 minutes in seconds
+        let timerInterval = null;
+        let studentInfo = {};
+
+        // Select quiz set
+        function selectSet(setName) {
+            currentSet = setName;
+            document.querySelectorAll('.set-btn').forEach(btn => btn.style.background = 'linear-gradient(45deg, #FF9933, #FFB366)');
+            event.target.style.background = 'linear-gradient(45deg, #138808, #4CAF50)';
+            document.getElementById('startBtn').disabled = false;
+        }
+
+        // Start quiz
+        function startQuiz() {
+            // Validate student information
+            const name = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value;
+            const house = document.getElementById('studentHouse').value;
+            
+            if (!name || !studentClass || !house || !currentSet) {
+                alert('Please fill all details and select a quiz set!');
+                return;
+            }
+            
+            // Store student information
+            studentInfo = {
+                name: name,
+                class: studentClass,
+                house: house,
+                set: currentSet
+            };
+            
+            // Initialize quiz
+            currentQuestions = quizSets[currentSet];
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentQuestions.length).fill(null);
+            
+            // Switch to quiz screen
+            document.getElementById('registrationScreen').style.display = 'none';
+            document.getElementById('quizScreen').style.display = 'block';
+            
+            // Start timer
+            startTimer();
+            
+            // Load first question
+            loadQuestion();
+        }
+
+        // Timer function
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+                
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            document.getElementById('timer').textContent = `⏰ ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Change timer color when time is running low
+            const timerElement = document.getElementById('timer');
+            if (timeRemaining <= 300) { // 5 minutes
+                timerElement.style.background = '#dc3545';
+            } else if (timeRemaining <= 600) { // 10 minutes
+                timerElement.style.background = '#ffc107';
+                timerElement.style.color = '#000';
+            }
+        }
+
+        // Load question
+        function loadQuestion() {
+            const question = currentQuestions[currentQuestionIndex];
+            const container = document.getElementById('questionContainer');
+            
+            container.innerHTML = `
+                <h3>Q${currentQuestionIndex + 1}. ${question.question}</h3>
+                <div class="options">
+                    ${question.options.map((option, index) => `
+                        <div class="option ${userAnswers[currentQuestionIndex] === index ? 'selected' : ''}" 
+                             onclick="selectOption(${index})">
+                            <input type="radio" name="option" value="${index}" 
+                                   ${userAnswers[currentQuestionIndex] === index ? 'checked' : ''}>
+                            <span>${option}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Update progress
+            document.getElementById('progress').textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}`;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').style.display = currentQuestionIndex === 0 ? 'none' : 'inline-block';
+            document.getElementById('nextBtn').style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'none' : 'inline-block';
+            document.getElementById('submitBtn').style.display = currentQuestionIndex === currentQuestions.length - 1 ? 'inline-block' : 'none';
+        }
+
+        // Select option
+        function selectOption(optionIndex) {
+            userAnswers[currentQuestionIndex] = optionIndex;
+            
+            // Update visual selection
+            document.querySelectorAll('.option').forEach((option, index) => {
+                option.classList.toggle('selected', index === optionIndex);
+                option.querySelector('input').checked = index === optionIndex;
+            });
+        }
+
+        // Navigation functions
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuestions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            }
+        }
+
+        // Submit quiz
+        function submitQuiz() {
+            clearInterval(timerInterval);
+            
+            // Calculate score
+            let correctAnswers = 0;
+            currentQuestions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            const percentage = Math.round((correctAnswers / currentQuestions.length) * 100);
+            
+            // Show results
+            showResults(correctAnswers, percentage);
+        }
+
+        // Show results
+        function showResults(score, percentage) {
+            document.getElementById('quizScreen').style.display = 'none';
+            document.getElementById('resultScreen').style.display = 'block';
+            
+            // Display student information
+            document.getElementById('studentInfo').innerHTML = `
+                <h3>Student Details</h3>
+                <p><strong>Name:</strong> ${studentInfo.name}</p>
+                <p><strong>Class:</strong> ${studentInfo.class}</p>
+                <p><strong>House:</strong> ${studentInfo.house}</p>
+                <p><strong>Quiz Set:</strong> ${getSetName(studentInfo.set)}</p>
+            `;
+            
+            // Display score
+            document.getElementById('scoreDisplay').textContent = `${score}/${currentQuestions.length}`;
+            
+            // Animate performance bar
+            setTimeout(() => {
+                document.getElementById('performanceFill').style.width = `${percentage}%`;
+            }, 500);
+            
+            // Performance message
+            let message = '';
+            if (percentage >= 90) {
+                message = '🏆 Outstanding! You have excellent knowledge of Indian Independence!';
+            } else if (percentage >= 80) {
+                message = '🌟 Excellent work! You know a lot about our freedom struggle!';
+            } else if (percentage >= 70) {
+                message = '👍 Good job! Keep learning about our great nation!';
+            } else if (percentage >= 60) {
+                message = '📚 Fair attempt! Read more about Indian history!';
+            } else {
+                message = '💪 Keep studying! Our freedom fighters\' stories are inspiring!';
+            }
+            
+            document.getElementById('performanceMessage').innerHTML = `
+                <strong>${percentage}% Score</strong><br>
+                ${message}
+            `;
+        }
+
+        function getSetName(setKey) {
+            const setNames = {
+                'set1': 'Set 1 (Class 1st & 2nd)',
+                'set2': 'Set 2 (Class 3rd to 5th)',
+                'set3': 'Set 3 (Class 6th to 8th)',
+                'set4': 'Set 4 (Class 9th & 10th)'
+            };
+            return setNames[setKey] || setKey;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            // Reset all variables
+            currentSet = null;
+            currentQuestions = [];
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            timeRemaining = 1800;
+            studentInfo = {};
+            
+            // Clear timer
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            
+            // Reset form
+            document.getElementById('studentName').value = '';
+            document.getElementById('studentClass').value = '';
+            document.getElementById('studentHouse').value = '';
+            document.getElementById('startBtn').disabled = true;
+            
+            // Reset set buttons
+            document.querySelectorAll('.set-btn').forEach(btn => {
+                btn.style.background = 'linear-gradient(45deg, #FF9933, #FFB366)';
+            });
+            
+            // Show registration screen
+            document.getElementById('resultScreen').style.display = 'none';
+            document.getElementById('registrationScreen').style.display = 'block';
+        }
+
+        // Prevent right-click and key combinations (basic protection)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            // Disable F12, Ctrl+Shift+I, Ctrl+U
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
